@@ -5,6 +5,7 @@ export const Header = ({
   handleChangeYear,
   searchName,
   searchYear,
+  years
 }) => {
   const handleForm = (ev) => {
     ev.preventDefault();
@@ -18,6 +19,7 @@ export const Header = ({
           handleChangeYear={handleChangeYear}
           searchName={searchName}
           searchYear={searchYear}
+          years={years}
         />
       </form>
     </>
