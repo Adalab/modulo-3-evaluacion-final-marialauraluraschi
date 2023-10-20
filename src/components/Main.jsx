@@ -1,22 +1,23 @@
 import '../styles/layout/Main.scss';
 
-export const Main = () => {
+export const Main = ({filteredScenes}) => {
   return (
     <>
       <ul>
-        <li>
-          <article className='article'>
+      {filteredScenes.map(scene => (
+        <li key={scene.id}>
+          <article className='article' >
             <img
-              src='#'
+              src={scene.poster}
               alt='poster'
               className='article__poster'
-              placeholder='https://loremflickr.com/320/240/popcorn'
             />
-            <p className='article__movie'>movie</p>
-            <p className='article__year'>year</p>
-            <p className='article__quote'>frase</p>
+            <p className='article__movie'>{scene.movie}</p>
+            <p className='article__year'>{scene.year}</p>
+            <p className='article__quote'>{scene.frase}</p>
           </article>
         </li>
+        ))}
       </ul>
     </>
   );

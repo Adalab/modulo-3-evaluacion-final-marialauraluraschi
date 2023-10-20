@@ -26,7 +26,10 @@ function App() {
   const handleChangeYear = (event) => {
     setSearchYear(event.target.value);
   };
-
+  const filteredScenes = scenes.filter(scene => 
+    scene.movie.toLowerCase().includes(searchName.toLowerCase()) && 
+    (searchYear === 'Todos' || scene.year === searchYear)
+  );
   return (
     <>
       <header className='header'>
@@ -38,8 +41,9 @@ function App() {
           years={years}
         />
       </header>
+
       <main className='main'>
-        <Main />
+        <Main filteredScenes={filteredScenes}/>
       </main>
     </>
   );
