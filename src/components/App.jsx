@@ -14,12 +14,23 @@ function App() {
       console.log(scenes);
     });
   }, []);
-  
-  
+
+  const handleChangeName = (event) => {
+    setSearchName(event.target.value);
+  };
+
+  const handleChangeYear = (event) => {
+    setSearchYear(event.target.value);
+  };
   return (
     <>
       <header className='header'>
-        <Header />
+        <Header
+          handleChangeName={handleChangeName}
+          handleChangeYear={handleChangeYear}
+          searchName={searchName}
+          searchYear={searchYear}
+        />
       </header>
       <main className='main'>
         <Main />
