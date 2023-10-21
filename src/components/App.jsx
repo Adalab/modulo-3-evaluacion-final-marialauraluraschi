@@ -11,11 +11,12 @@ function App() {
   const [searchName, setSearchName] = useState('');
   const [searchYear, setSearchYear] = useState('Todos');
   const [years, setYears] = useState([]);
+  const [detail, setDetail] = useState({});
   useEffect(() => {
     getApi().then((response) => {
       setScenes(response);
-      const yearsOnly = [...new Set(response.map((scene) => scene.year))]; // Obtiene los años únicos
-      yearsOnly.sort((a, b) => a - b); // Ordena los años
+      const yearsOnly = [...new Set(response.map((scene) => scene.year))];
+      yearsOnly.sort((a, b) => a - b);
       setYears(yearsOnly);
     });
   }, []);
@@ -30,7 +31,10 @@ function App() {
 
   const handleClick = (event) => {
     const clickedId = event.currentTarget.id;
-    console.log(clickedId);
+    getApi().then((scenes) => {
+      const foundScene = scenes.find((scene) => scene.id === clickedId);
+      setDetail(foundScene);
+    });
     const url = `${window.location.origin}/scene/${clickedId}`;
     window.open(url, '_blank');
   };
@@ -67,7 +71,10 @@ function App() {
                 />
               }
             />
-            <Route path='/scene/:id' element={<SceneDetail />} />
+            <Route
+              path='/scene/:id'
+              element={<SceneDetail scenes={scenes} />}
+            />
           </Routes>
         </main>
       </Router>

@@ -4,8 +4,8 @@ const SceneList = ({ filteredScenes, handleClick }) => {
   return (
     <>
       {filteredScenes.map((scene) => (
-        <li key={scene.id}  id={scene.id} onClick={handleClick}>
-          <SceneItem  scene={scene}  />
+        <li key={scene.id} id={scene.id} onClick={handleClick}>
+          <SceneItem scene={scene} />
         </li>
       ))}
     </>

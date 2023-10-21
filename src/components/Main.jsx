@@ -1,13 +1,11 @@
 import '../styles/layout/Main.scss';
 import SceneList from './SceneList';
 
-
-export const Main = ({filteredScenes, handleClick}) => {
+export const Main = ({ filteredScenes, handleClick }) => {
   return (
     <>
       <ul>
-      <SceneList filteredScenes={filteredScenes} handleClick={handleClick}/>
-
+        <SceneList filteredScenes={filteredScenes} handleClick={handleClick} />
       </ul>
     </>
   );

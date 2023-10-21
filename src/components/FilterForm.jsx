@@ -5,7 +5,6 @@ const FilterForm = ({
   searchYear,
   years,
 }) => {
-  
   return (
     <>
       <label>
@@ -20,7 +19,7 @@ const FilterForm = ({
           onChange={handleChangeYear}
           value={searchYear}
         >
-          <option value='Todos'>Todos</option> 
+          <option value='Todos'>Todos</option>
           {years.map((year) => (
             <option key={year} value={year}>
               {year}
