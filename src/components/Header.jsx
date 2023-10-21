@@ -5,7 +5,7 @@ export const Header = ({
   handleChangeYear,
   searchName,
   searchYear,
-  years
+  years,
 }) => {
   const handleForm = (ev) => {
     ev.preventDefault();

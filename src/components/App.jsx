@@ -26,6 +26,13 @@ function App() {
     setSearchYear(event.target.value);
     
   };
+
+  const handleClick = (event) => {
+    const clickedId = event.target.id;
+    console.log(clickedId)
+  };
+  
+
   const filteredScenes = scenes.filter(scene => 
     (searchName === '' || scene.movie.toLowerCase().includes(searchName.toLowerCase())) && 
     (searchYear === 'Todos' || scene.year.toString() === searchYear)
@@ -46,7 +53,7 @@ function App() {
       </header>
 
       <main className='main'>
-        <Main filteredScenes={filteredScenes}/>
+        <Main filteredScenes={filteredScenes} handleClick={handleClick} />
       </main>
     </>
   );
