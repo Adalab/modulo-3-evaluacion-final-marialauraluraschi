@@ -4,6 +4,7 @@ export const Main = ({filteredScenes}) => {
   return (
     <>
       <ul>
+      
       {filteredScenes.map(scene => (
         <li key={scene.id}>
           <article className='article' >

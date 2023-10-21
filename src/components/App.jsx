@@ -12,7 +12,6 @@ function App() {
   useEffect(() => {
     getApi().then((response) => {
       setScenes(response);
-      console.log(scenes);
       const yearsOnly = [...new Set(response.map(scene => scene.year))]; // Obtiene los años únicos
     yearsOnly.sort((a, b) => a - b); // Ordena los años
     setYears(yearsOnly);
@@ -25,11 +24,15 @@ function App() {
 
   const handleChangeYear = (event) => {
     setSearchYear(event.target.value);
+    
   };
   const filteredScenes = scenes.filter(scene => 
-    scene.movie.toLowerCase().includes(searchName.toLowerCase()) && 
-    (searchYear === 'Todos' || scene.year === searchYear)
+    (searchName === '' || scene.movie.toLowerCase().includes(searchName.toLowerCase())) && 
+    (searchYear === 'Todos' || scene.year.toString() === searchYear)
   );
+  
+  
+  
   return (
     <>
       <header className='header'>
