@@ -33,6 +33,7 @@ function App() {
 
   const handleClick = (clickedScene) => {
     setOneScene(clickedScene);
+    console.log(oneScene.id);
   };
 
   const filteredScenes = scenes.filter(
@@ -58,6 +59,7 @@ function App() {
         <Main filteredScenes={filteredScenes} handleClick={handleClick} />
       </main>
       <Routes >
+        <Route path={`/`} element={ <Main filteredScenes={filteredScenes} handleClick={handleClick} />} />
         <Route path={`/scene/${oneScene.id}`} element={<SceneDetail oneScene={oneScene} />} />
       </Routes>
     </>

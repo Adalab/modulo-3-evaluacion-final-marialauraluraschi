@@ -6,11 +6,10 @@ const SceneList = ({ filteredScenes, handleClick }) => {
   const handleClickedScene = (event) => {
     const clickedId = event.currentTarget.id;
     const clickedScene = filteredScenes.find((scene) => scene.id === clickedId);
-    console.log(clickedScene);
-
     {
       handleClick(clickedScene);
     }
+    console.log(clickedScene);
   };
 
   return (
@@ -25,6 +24,8 @@ const SceneList = ({ filteredScenes, handleClick }) => {
           >
             <SceneItem scene={scene} />
           </NavLink>
+
+          {/*en el scss tiene la clase active por defecto .link a.active {color: red;} */}
         </li>
       ))}
     </>
