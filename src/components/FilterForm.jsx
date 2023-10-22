@@ -1,3 +1,4 @@
+import '../styles/layout/FilterForm.scss';
 const FilterForm = ({
   handleChangeName,
   handleChangeYear,

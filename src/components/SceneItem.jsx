@@ -1,3 +1,4 @@
+import '../styles/layout/SceneItem.scss';
 const SceneItem = ({ scene }) => {
   return (
     <>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import getApi from '../services/getApi';
+import ls from '../services/ls';
 import '../styles/App.scss';
 import Header from './Header';
 import Main from './Main';
@@ -8,10 +9,11 @@ import SceneDetail from './SceneDetail';
 
 function App() {
   const [scenes, setScenes] = useState([]);
+  const [oneScene, setOneScene] = useState({});
   const [searchName, setSearchName] = useState('');
   const [searchYear, setSearchYear] = useState('Todos');
   const [years, setYears] = useState([]);
-  const [detail, setDetail] = useState({});
+
   useEffect(() => {
     getApi().then((response) => {
       setScenes(response);
@@ -29,16 +31,9 @@ function App() {
     setSearchYear(event.target.value);
   };
 
-  const handleClick = (event) => {
-    const clickedId = event.currentTarget.id;
-    getApi().then((scenes) => {
-      const foundScene = scenes.find((scene) => scene.id === clickedId);
-      setDetail(foundScene);
-    });
-    const url = `${window.location.origin}/scene/${clickedId}`;
-    window.open(url, '_blank');
+  const handleClick = (clickedScene) => {
+    setOneScene(clickedScene);
   };
-  
 
   const filteredScenes = scenes.filter(
     (scene) =>
@@ -49,35 +44,22 @@ function App() {
 
   return (
     <>
-      <Router>
-        <header className='header'>
-          <Header
-            handleChangeName={handleChangeName}
-            handleChangeYear={handleChangeYear}
-            searchName={searchName}
-            searchYear={searchYear}
-            years={years}
-          />
-        </header>
+      <header className='header'>
+        <Header
+          handleChangeName={handleChangeName}
+          handleChangeYear={handleChangeYear}
+          searchName={searchName}
+          searchYear={searchYear}
+          years={years}
+        />
+      </header>
 
-        <main className='main'>
-          <Routes>
-            <Route
-              path='/'
-              element={
-                <Main
-                  filteredScenes={filteredScenes}
-                  handleClick={handleClick}
-                />
-              }
-            />
-            <Route
-              path='/scene/:id'
-              element={<SceneDetail scenes={scenes} />}
-            />
-          </Routes>
-        </main>
-      </Router>
+      <main className='main'>
+        <Main filteredScenes={filteredScenes} handleClick={handleClick} />
+      </main>
+      <Routes >
+        <Route path={`/scene/${oneScene.id}`} element={<SceneDetail oneScene={oneScene} />} />
+      </Routes>
     </>
   );
 }
