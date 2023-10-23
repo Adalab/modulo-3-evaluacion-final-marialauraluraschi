@@ -10,6 +10,7 @@ const SceneList = ({ filteredScenes, handleClick }) => {
       handleClick(clickedScene);
     }
     console.log(clickedScene);
+    console.log(event.currentTarget);
   };
 
   return (

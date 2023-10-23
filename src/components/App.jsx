@@ -9,7 +9,7 @@ import SceneDetail from './SceneDetail';
 function App() {
   const [scenes, setScenes] = useState([]);
   const [oneScene, setOneScene] = useState({});
-  const [searchName, setSearchName] = useState('');
+  const [searchName, setSearchName] = useState(ls.get('searchName', ''));
   const [searchYear, setSearchYear] = useState('Todos');
   const [years, setYears] = useState([]);
 
@@ -22,6 +22,10 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    ls.set('searchName', searchName);
+  }, [searchName]);
+
   const handleChangeName = (event) => {
     setSearchName(event.target.value);
   };
@@ -32,7 +36,6 @@ function App() {
 
   const handleClick = (clickedScene) => {
     setOneScene(clickedScene);
-    console.log(oneScene.id);
   };
 
   const filteredScenes = scenes.filter(

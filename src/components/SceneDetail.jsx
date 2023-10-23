@@ -1,6 +1,6 @@
 import '../styles/layout/SceneDetail.scss';
 const SceneDetail = ({ oneScene }) => {
-  console.log(oneScene);
+
   return (
     <>
       <article className='article'>
