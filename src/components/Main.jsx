@@ -5,7 +5,7 @@ export const Main = ({ filteredScenes, handleClick }) => {
   return (
     <>
       <ul className='main__ul' >
-        <SceneList filteredScenes={filteredScenes} handleClick={handleClick} />
+        <SceneList filteredScenes={filteredScenes} handleClick={handleClick}/>
       </ul>
     </>
   );

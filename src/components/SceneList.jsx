@@ -1,34 +1,24 @@
-import { NavLink } from 'react-router-dom';
 import '../styles/layout/SceneList.scss';
 import SceneItem from './SceneItem';
 
-const SceneList = ({ filteredScenes, handleClick }) => {
+const SceneList = ({ handleClick, filteredScenes }) => {
   const handleClickedScene = (event) => {
     const clickedId = event.currentTarget.id;
-    const clickedScene = filteredScenes.find((scene) => scene.id === clickedId);
+    // const clickedScene = filteredScenes.find((scene) => scene.id === clickedId);
     {
-      handleClick(clickedScene);
+      handleClick(clickedId);
     }
-    console.log(clickedScene);
-    console.log(event.currentTarget);
   };
-
-  return (
-    <>
-      {filteredScenes.map((scene) => (
-        <li key={scene.id} id={scene.id} onClick={handleClickedScene} className='main__ul--li'>
-          <NavLink
-            to={`/scene/${scene.id}`}
-            className='link'
-            id={`${scene.id}`}
-            target='_blank'
-          >
-            <SceneItem scene={scene} />
-          </NavLink>
-        </li>
-      ))}
-    </>
-  );
+  const renderList = filteredScenes.map((scene) => (
+    <li
+      key={scene.id}
+      onClick={handleClickedScene}
+      className='main__ul--li'
+    >
+      <SceneItem scene={scene} />
+    </li>
+  ));
+  return <>{renderList}</>;
 };
 
 export default SceneList;

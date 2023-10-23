@@ -14,9 +14,9 @@ function App() {
   const [years, setYears] = useState([]);
 
   useEffect(() => {
-    getApi().then((response) => {
-      setScenes(response);
-      const yearsOnly = [...new Set(response.map((scene) => scene.year))];
+    getApi().then((cleanData) => {
+      setScenes(cleanData);
+      const yearsOnly = [...new Set(cleanData.map((scene) => scene.year))];
       yearsOnly.sort((a, b) => a - b);
       setYears(yearsOnly);
     });
@@ -26,16 +26,16 @@ function App() {
     ls.set('searchName', searchName);
   }, [searchName]);
 
-  const handleChangeName = (event) => {
-    setSearchName(event.target.value);
+  const handleChangeName = (value) => {
+    setSearchName(value);
   };
 
-  const handleChangeYear = (event) => {
-    setSearchYear(event.target.value);
+  const handleChangeYear = (value) => {
+    setSearchYear(value);
   };
 
-  const handleClick = (clickedScene) => {
-    setOneScene(clickedScene);
+  const handleClick = (clickedId) => {
+    setOneScene(clickedId);
   };
 
   const filteredScenes = scenes.filter(
@@ -59,6 +59,7 @@ function App() {
               years={years}
               handleClick={handleClick}
               filteredScenes={filteredScenes}
+              scenes={scenes}
             />
           }
         />

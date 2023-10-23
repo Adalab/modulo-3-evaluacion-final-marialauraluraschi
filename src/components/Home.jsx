@@ -23,7 +23,10 @@ const Home = ({
       </header>
 
       <main className='main'>
-        <Main filteredScenes={filteredScenes} handleClick={handleClick} />
+        <Main
+          filteredScenes={filteredScenes}
+          handleClick={handleClick}
+        />
       </main>
     </>
   );
