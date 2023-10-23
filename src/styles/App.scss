@@ -1,5 +1,12 @@
 @import 'core/Variables';
 @import 'core/Mixins';
 @import 'core/Reset';
-@import 'layout/Header';
-@import 'layout/Main';
+
+#root {
+  @include centerTotal;
+  width: 100%;
+  min-height: 100vh;
+  @include textStyle($font1, regular, 1.5rem, $light);
+  background-color: $dark;
+  // @include iconStyle($fontWeight, $fontSize, $color);
+}

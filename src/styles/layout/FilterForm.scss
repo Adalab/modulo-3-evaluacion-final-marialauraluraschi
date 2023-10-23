@@ -1,0 +1,11 @@
+@import '../core/Variables.scss';
+@import '../core/Mixins';
+@import '../core/Reset';
+
+.header__form {
+  @include centerTotal;
+  @include textStyle($font1, regular, 1.5rem, $light);
+  @media (min-width: 720px) {
+    @include textStyle($font1, regular, 2.5rem, $light);
+  }
+}

@@ -12,8 +12,10 @@ export const Header = ({
   };
   return (
     <>
-      <h1 className='header__title'>Owen Wilson s wow</h1>
-      <form onSubmit={handleForm}>
+      <h1 className='header__title'>
+        Owen Wilson s <q>wow</q>{' '}
+      </h1>
+      <form onSubmit={handleForm} className='header__form'>
         <FilterForm
           handleChangeName={handleChangeName}
           handleChangeYear={handleChangeYear}

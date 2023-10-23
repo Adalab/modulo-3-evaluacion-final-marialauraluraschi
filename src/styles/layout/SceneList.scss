@@ -1,0 +1,23 @@
+@import '../core/Variables.scss';
+@import '../core/Mixins';
+@import '../core/Reset';
+
+.main__ul {
+  @include textStyle($font1, regular, 1.8rem, $light);
+  @include centerTotal;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  @media (min-width: 720px) {
+    @include textStyle($font1, regular, 3rem, $light);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: flex-start;
+    justify-items: center;
+  }
+  &--li,
+  .link {
+    cursor: pointer;
+    width: 75%;
+  }
+}

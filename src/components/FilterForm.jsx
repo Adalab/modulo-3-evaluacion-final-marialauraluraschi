@@ -8,11 +8,11 @@ const FilterForm = ({
 }) => {
   return (
     <>
-      <label>
+      <label className='header__form--movie'>
         Movie
         <input type='text' onChange={handleChangeName} value={searchName} />
       </label>
-      <label>
+      <label className='header__form--year'>
         Year
         <select
           name='year'

@@ -1,0 +1,15 @@
+@import '../core/Variables.scss';
+@import '../core/Mixins';
+@import '../core/Reset';
+.article{
+    @include centerTotal;
+    @include textStyle($font1, regular, 1.25rem, $light);
+    @media (min-width: 720px) {
+        width:100% ;
+        @include textStyle($font1, regular, 2rem, $light);
+      }
+    &__poster{
+        width:100% ;
+        height: 80%;
+    }
+}

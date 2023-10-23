@@ -15,7 +15,7 @@ const SceneList = ({ filteredScenes, handleClick }) => {
   return (
     <>
       {filteredScenes.map((scene) => (
-        <li key={scene.id} id={scene.id} onClick={handleClickedScene}>
+        <li key={scene.id} id={scene.id} onClick={handleClickedScene} className='main__ul--li'>
           <NavLink
             to={`/scene/${scene.id}`}
             className='link'

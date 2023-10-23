@@ -4,9 +4,12 @@ const SceneItem = ({ scene }) => {
     <>
       <article className='article'>
         <img src={scene.poster} alt='poster' className='article__poster' />
-        <p className='article__movie'>{scene.movie}</p>
-        <p className='article__year'>{scene.year}</p>
-        <p className='article__quote'>{scene.frase}</p>
+        <p className='article__par'>
+          <span className='article__par--movie'>{scene.movie}</span>
+          <span> - </span>
+          <span className='article__par--year'>{scene.year}</span>
+        </p>
+        <q className='article__quote'>{scene.frase}</q>
       </article>
     </>
   );
