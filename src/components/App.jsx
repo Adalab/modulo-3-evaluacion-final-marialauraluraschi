@@ -8,17 +8,13 @@ import SceneDetail from './SceneDetail';
 
 function App() {
   const [scenes, setScenes] = useState([]);
-  const [oneScene, setOneScene] = useState({});
+  const [oneScene, setOneScene] = useState('');
   const [searchName, setSearchName] = useState(ls.get('searchName', ''));
   const [searchYear, setSearchYear] = useState('Todos');
-  const [years, setYears] = useState([]);
 
   useEffect(() => {
     getApi().then((cleanData) => {
       setScenes(cleanData);
-      const yearsOnly = [...new Set(cleanData.map((scene) => scene.year))];
-      yearsOnly.sort((a, b) => a - b);
-      setYears(yearsOnly);
     });
   }, []);
 
@@ -34,8 +30,8 @@ function App() {
     setSearchYear(value);
   };
 
-  const handleClick = (clickedId) => {
-    setOneScene(clickedId);
+  const handleClick = (id) => {
+    setOneScene(id);
   };
 
   const filteredScenes = scenes.filter(
@@ -44,6 +40,11 @@ function App() {
         scene.movie.toLowerCase().includes(searchName.toLowerCase())) &&
       (searchYear === 'Todos' || scene.year.toString() === searchYear)
   );
+
+  const years = () => {
+    const uniqueYears = [...new Set(scenes.map((scene) => scene.year))];
+    return uniqueYears.sort((a, b) => a - b);
+  };
 
   return (
     <>
@@ -56,7 +57,7 @@ function App() {
               handleChangeYear={handleChangeYear}
               searchName={searchName}
               searchYear={searchYear}
-              years={years}
+              years={years()}
               handleClick={handleClick}
               filteredScenes={filteredScenes}
               scenes={scenes}
