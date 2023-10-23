@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { useLocation, matchPath } from 'react-router-dom';
 import '../styles/App.scss';
 import getApi from '../services/getApi';
 import ls from '../services/ls';
@@ -9,7 +10,6 @@ import SceneDetail from './SceneDetail';
 
 function App() {
   const [scenes, setScenes] = useState([]);
-  const [oneScene, setOneScene] = useState('');
   const [searchName, setSearchName] = useState(ls.get('searchName', ''));
   const [searchYear, setSearchYear] = useState('Todos');
 
@@ -31,10 +31,6 @@ function App() {
     setSearchYear(value);
   };
 
-  const handleClick = (id) => {
-    setOneScene(id);
-  };
-
   const filteredScenes = scenes.filter(
     (scene) =>
       (searchName === '' ||
@@ -46,7 +42,7 @@ function App() {
     const uniqueYears = [...new Set(scenes.map((scene) => scene.year))];
     return uniqueYears.sort((a, b) => a - b);
   };
-
+  
   return (
     <>
       <header className='header'>
@@ -62,9 +58,9 @@ function App() {
       <main className='main'>
         <Routes>
           <Route
-            path={`/`}
+            path={'/'}
             element={
-              <Main filteredScenes={filteredScenes} handleClick={handleClick} />
+              <Main filteredScenes={filteredScenes} />
             }
           />
           <Route
