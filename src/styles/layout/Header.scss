@@ -3,6 +3,8 @@
 @import '../core/Reset';
 
 .header {
+  width: 100%;
+  background: radial-gradient( $grey, $dark);
   @include centerTotal;
   @include textStyle($font1, regular, 1.8rem, $light);
   @media (min-width: 720px) {

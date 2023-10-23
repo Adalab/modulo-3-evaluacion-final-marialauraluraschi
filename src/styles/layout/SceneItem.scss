@@ -3,13 +3,18 @@
 @import '../core/Reset';
 .article{
     @include centerTotal;
-    @include textStyle($font1, regular, 1.25rem, $light);
+    @include textStyle($font1, regular, 1.75rem, $light);
     @media (min-width: 720px) {
-        width:100% ;
-        @include textStyle($font1, regular, 2rem, $light);
-      }
+        @include textStyle($font1, regular, 2.5rem, $light);
+    }
     &__poster{
         width:100% ;
-        height: 80%;
+    }
+    &__quote{
+        @include textStyle($font2, regular, 2rem, $light);
+        @media (min-width: 720px) {
+            @include textStyle($font2, regular, 3.5rem, $light);
+        }
+
     }
 }

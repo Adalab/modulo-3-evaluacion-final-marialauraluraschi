@@ -3,8 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import getApi from '../services/getApi';
 import ls from '../services/ls';
 import '../styles/App.scss';
-import Header from './Header';
-import Main from './Main';
+import Home from './Home';
 import SceneDetail from './SceneDetail';
 
 function App() {
@@ -45,23 +44,25 @@ function App() {
 
   return (
     <>
-      <header className='header'>
-        <Header
-          handleChangeName={handleChangeName}
-          handleChangeYear={handleChangeYear}
-          searchName={searchName}
-          searchYear={searchYear}
-          years={years}
+      <Routes>
+        <Route
+          path={`/`}
+          element={
+            <Home
+              handleChangeName={handleChangeName}
+              handleChangeYear={handleChangeYear}
+              searchName={searchName}
+              searchYear={searchYear}
+              years={years}
+              handleClick={handleClick}
+              filteredScenes={filteredScenes}
+            />
+          }
         />
-      </header>
-
-      <main className='main'>
-        <Main filteredScenes={filteredScenes} handleClick={handleClick} />
-      </main>
-      
-      <Routes >
-        <Route path={`/`} element={ <Main filteredScenes={filteredScenes} handleClick={handleClick} />} />
-        <Route path={`/scene/${oneScene.id}`} element={<SceneDetail oneScene={oneScene} />} />
+        <Route
+          path={`/scene/${oneScene.id}`}
+          element={<SceneDetail oneScene={oneScene} />}
+        />
       </Routes>
     </>
   );

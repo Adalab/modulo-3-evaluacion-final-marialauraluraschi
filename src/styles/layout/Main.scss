@@ -2,10 +2,6 @@
 @import '../core/Mixins';
 @import '../core/Reset';
 
-.main {
-  @include centerTotal;
-  @include textStyle($font1, regular, 1.8rem, $light);
-  @media (min-width: 720px) {
-    @include textStyle($font1, regular, 3rem, $light);
-  }
+.main{
+  background: radial-gradient( $grey, $dark);
 }
