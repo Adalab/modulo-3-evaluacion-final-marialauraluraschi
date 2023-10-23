@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import '../styles/App.scss';
 import getApi from '../services/getApi';
 import ls from '../services/ls';
-import '../styles/App.scss';
-import Home from './Home';
+import Header from './Header';
+import Main from './Main';
 import SceneDetail from './SceneDetail';
 
 function App() {
@@ -48,27 +49,31 @@ function App() {
 
   return (
     <>
-      <Routes>
-        <Route
-          path={`/`}
-          element={
-            <Home
-              handleChangeName={handleChangeName}
-              handleChangeYear={handleChangeYear}
-              searchName={searchName}
-              searchYear={searchYear}
-              years={years()}
-              handleClick={handleClick}
-              filteredScenes={filteredScenes}
-              scenes={scenes}
-            />
-          }
+      <header className='header'>
+        <Header
+          handleChangeName={handleChangeName}
+          handleChangeYear={handleChangeYear}
+          searchName={searchName}
+          searchYear={searchYear}
+          years={years()}
         />
-        <Route
-          path={`/scene/${oneScene.id}`}
-          element={<SceneDetail oneScene={oneScene} />}
-        />
-      </Routes>
+      </header>
+
+      <main className='main'>
+        <Routes>
+          <Route
+            path={`/`}
+            element={
+              <Main filteredScenes={filteredScenes} handleClick={handleClick} />
+            }
+          />
+          <Route
+            path={'/scene/:id'}
+            element={<h1>Hola, mundo</h1>}
+            // element={<SceneDetail oneScene={oneScene} />}
+          />
+        </Routes>
+      </main>
     </>
   );
 }

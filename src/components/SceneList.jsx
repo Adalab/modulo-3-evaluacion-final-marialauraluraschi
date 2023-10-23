@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import '../styles/layout/SceneList.scss';
 import SceneItem from './SceneItem';
 
@@ -8,9 +9,11 @@ const SceneList = ({ handleClick, filteredScenes }) => {
     }
   };
   const renderList = filteredScenes.map((scene) => (
-    <li key={scene.id} onClick={handleClickedScene} className='main__ul--li'>
-      <SceneItem scene={scene} />
-    </li>
+    <NavLink to={`/scene/${scene.id}`} key={scene.id}>
+      <li  onClick={handleClickedScene} className='main__ul--li'>
+        <SceneItem scene={scene} />
+      </li>
+    </NavLink>
   ));
   return <>{renderList}</>;
 };
