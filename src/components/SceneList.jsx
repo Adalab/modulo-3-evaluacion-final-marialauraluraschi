@@ -24,8 +24,6 @@ const SceneList = ({ filteredScenes, handleClick }) => {
           >
             <SceneItem scene={scene} />
           </NavLink>
-
-          {/*en el scss tiene la clase active por defecto .link a.active {color: red;} */}
         </li>
       ))}
     </>
