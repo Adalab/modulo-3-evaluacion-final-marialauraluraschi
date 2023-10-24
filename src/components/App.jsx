@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useLocation, matchPath } from 'react-router-dom';
+import { useLocation, matchPath, NavLink } from 'react-router-dom';
 import '../styles/App.scss';
 import getApi from '../services/getApi';
 import ls from '../services/ls';
@@ -42,7 +42,12 @@ function App() {
     const uniqueYears = [...new Set(scenes.map((scene) => scene.year))];
     return uniqueYears.sort((a, b) => a - b);
   };
-  
+  const { pathname } = useLocation();
+  const routData = matchPath('/scene/:id', pathname);
+  console.log(routData);
+  const sceneId = routData ? routData.params.id : '';
+  console.log(sceneId);
+  const oneScene = scenes.find((scene) => scene.id === sceneId);
   return (
     <>
       <header className='header'>
@@ -59,15 +64,23 @@ function App() {
         <Routes>
           <Route
             path={'/'}
-            element={
-              <Main filteredScenes={filteredScenes} />
-            }
+            element={<Main filteredScenes={filteredScenes} />}
           />
           <Route
             path={'/scene/:id'}
-            element={<h1>Hola, mundo</h1>}
-            // element={<SceneDetail oneScene={oneScene} />}
+            element={
+              <>
+                <SceneDetail oneScene={oneScene} />
+                <NavLink to='/'>
+                  <>
+                    <i className='fa-solid fa-angles-left'> </i>
+                    <small>Volver</small>
+                  </>
+                </NavLink>
+              </>
+            }
           />
+          <Route path='*' element={<h1>La escena que buscas no existe</h1>} />
         </Routes>
       </main>
     </>
