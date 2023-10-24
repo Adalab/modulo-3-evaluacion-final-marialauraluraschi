@@ -2,6 +2,8 @@
 @import '../core/Mixins';
 @import '../core/Reset';
 
-.main{
-  background: radial-gradient( $grey, $dark);
+.main {
+  background: radial-gradient($grey, $dark);
+  padding: 1rem;
+  min-height: 60vh;
 }

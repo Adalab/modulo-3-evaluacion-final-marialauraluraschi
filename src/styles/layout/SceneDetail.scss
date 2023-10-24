@@ -1,20 +1,29 @@
 @import '../core/Variables.scss';
 @import '../core/Mixins';
 @import '../core/Reset';
-.article{
-    @include centerTotal;
+.article {
+  @include centerTotal;
+  @include textStyle($font1, regular, 1.75rem, $light);
+  @media (min-width: 720px) {
+    @include textStyle($font1, regular, 2.5rem, $light);
+  }
+  &__poster {
+    width: 75%;
+  }
+  &__quote {
+    @include textStyle($font2, regular, 2rem, $light);
+    @media (min-width: 720px) {
+      @include textStyle($font2, regular, 3.5rem, $light);
+    }
+  }
+  &__audio {
     @include textStyle($font1, regular, 1.75rem, $light);
     @media (min-width: 720px) {
-        @include textStyle($font1, regular, 2.5rem, $light);
+      @include textStyle($font1, regular, 2.5rem, $light);
     }
-    &__poster{
-        width:100% ;
-    }
-    &__quote{
-        @include textStyle($font2, regular, 2rem, $light);
-        @media (min-width: 720px) {
-            @include textStyle($font2, regular, 3.5rem, $light);
-        }
+  }
 
-    }
+  i {
+    margin: 0.5rem;
+  }
 }

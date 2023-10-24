@@ -3,9 +3,27 @@
 @import '../core/Reset';
 
 .header__form {
-  @include centerTotal;
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
   @include textStyle($font1, regular, 1.5rem, $light);
   @media (min-width: 720px) {
     @include textStyle($font1, regular, 2.5rem, $light);
   }
+  &--movie input {
+    margin-left: 1rem;
+    padding: 0.25rem;
+    @include textStyle($font2, regular, 1.5rem, $dark);
+    @media (min-width: 720px) {
+      @include textStyle($font2, regular, 2.5rem, $dark);
+    }
+  }
+    &--year select {
+      border: none;
+      margin-left: 1rem;
+      font-size: 1.4rem;
+      height: 3rem;
+      padding: 0.5rem;
+      @include textStyle($font2, regular, 1.6rem, $dark);
+    }
 }

@@ -2,6 +2,7 @@
 @import '../core/Mixins';
 @import '../core/Reset';
 .article{
+    margin:auto;
     @include centerTotal;
     @include textStyle($font1, regular, 1.75rem, $light);
     @media (min-width: 720px) {
